@@ -14,8 +14,12 @@ protocol HomeViewModelDelegate: AnyObject {
 
 class HomeViewModel {
     
+    private var limit = 10
+    private var offset = 0
     private var listHero: [Hero] = []
     private let service: Service = Service()
+    
+    var isPaging: Bool = false
     
     private weak var delegate: HomeViewModelDelegate?
     
@@ -30,20 +34,37 @@ class HomeViewModel {
         self.delegate = delegate
     }
     
-    func fetchAllHeroes() {
+    func fetchAllHeroes(pagination: Bool = false) {
         
-        FullScreenLoaderView.show()
+        isPaging = pagination
         
-        service.getHeroes() { success, error in
+        if !pagination {
+            FullScreenLoaderView.show()
+        }
+       
+        if pagination {
+            offset = offset + limit
+        }
+        
+        let parameters = ["limit": "\(self.limit)", "offset": "\(self.offset)"]
+        
+        service.getHeroes(parameters: parameters) { success, error in
             
             if let result = success {
-                self.listHero = result
+                
+                self.listHero.append(contentsOf: result)
+                
                 self.delegate?.successRequest()
+                
             } else {
                 self.delegate?.errorRequest()
             }
              
             FullScreenLoaderView.hide()
+            
+            if pagination {
+                self.isPaging = false
+            }
         }
         
     }

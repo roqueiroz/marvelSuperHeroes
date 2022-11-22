@@ -7,6 +7,31 @@
 
 import UIKit
 
+
+extension UITableView {
+    
+    func showFooterLoading(_ show: Bool) {
+        
+        if show {
+            
+            let footerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 100))
+            
+            let spinner = UIActivityIndicatorView()
+            spinner.center = footerView.center
+            spinner.startAnimating()
+            
+            footerView.addSubview(spinner)
+            
+            self.tableFooterView = footerView
+            
+        } else {
+            self.tableFooterView = nil
+        }
+        
+    }
+    
+}
+
 extension UIImageView {
     
     func imageURLLoad(url: URL) {

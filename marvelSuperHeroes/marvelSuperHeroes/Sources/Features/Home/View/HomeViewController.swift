@@ -18,13 +18,10 @@ class HomeViewController: UIViewController {
         self.navigationItem.searchController = homeView?.searchBarHero
         
         self.homeViewModel.delegate(delegate: self)
+        self.homeView?.setSeachBarProtocols(delegate: self, resultsUpdate: self)
         self.homeViewModel.fetchAllHeroes()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
         
-    }
-    
     override func loadView() {
         self.homeView = HomeView()
        
@@ -38,6 +35,19 @@ class HomeViewController: UIViewController {
         heroDetailCtrl.setHero(hero)
 
         self.navigationController?.present(heroDetailCtrl, animated: true)
+        
+    }
+    
+}
+
+//MARK: UISearchBar Delegate
+extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating  {
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
     
@@ -93,6 +103,27 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         self.goToHeroDetail(hero)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let position = scrollView.contentOffset.y
+        let scrollFrame = scrollView.frame.size.height
+        
+        guard let tblHeight = self.homeView?.tblHeroes.contentSize.height
+        else {
+            return
+        }
+        
+        guard !self.homeViewModel.isPaging else {
+            return
+        }
+        
+        if position > (tblHeight - scrollFrame) {
+            self.homeView?.showFooterLoading(true)
+            self.homeViewModel.fetchAllHeroes(pagination: true)
+        }
+        
+    }
 }
 
 //MARK: ViewModel Delegate
@@ -100,6 +131,7 @@ extension HomeViewController: HomeViewModelDelegate {
     
     func successRequest() {
         self.homeView?.setTableViewProtocols(delegate: self, dataSource: self)
+        self.homeView?.showFooterLoading(false)
         self.homeView?.reloadTableView()
     }
     

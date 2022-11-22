@@ -12,20 +12,17 @@ class HomeView: UIView {
     lazy var searchBarHero: UISearchController = {
         
         let searchBarCtrl = UISearchController(searchResultsController: nil)
-//        searchBarCtrl.searchBar.delegate = self
-//        searchBarCtrl.searchResultsUpdater = self
         searchBarCtrl.searchBar.placeholder = "Pesquisar por nome..."
         searchBarCtrl.obscuresBackgroundDuringPresentation = false
         searchBarCtrl.searchBar.sizeToFit()
         searchBarCtrl.searchBar.searchBarStyle = .prominent
         searchBarCtrl.navigationController?.hidesBarsOnSwipe = false
         
-        
         return searchBarCtrl
     }()
     
     lazy var tblHeroes: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.separatorColor = UIColor.clear
@@ -47,12 +44,17 @@ class HomeView: UIView {
         self.tblHeroes.dataSource = dataSource
     }
     
+    public func setSeachBarProtocols(delegate: UISearchBarDelegate, resultsUpdate: UISearchResultsUpdating) {
+        self.searchBarHero.searchBar.delegate = delegate
+        self.searchBarHero.searchResultsUpdater = resultsUpdate
+    }
+    
     func reloadTableView() {
         self.tblHeroes.reloadData()
     }
     
-    func configScrol() {
-        self.tblHeroes.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: false)
+    func showFooterLoading(_ show: Bool) {
+        self.tblHeroes.showFooterLoading(show)
     }
     
     private func addSubViews() {
