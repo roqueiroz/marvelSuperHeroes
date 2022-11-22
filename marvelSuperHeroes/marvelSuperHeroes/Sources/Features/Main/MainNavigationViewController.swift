@@ -17,24 +17,25 @@ class MainNavigationViewController: UINavigationController {
     //MARK: Function`s
     private func setNavigationConfig() {
         
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.tintColor = .black
-        self.navigationBar.prefersLargeTitles = false
-        self.navigationBar.backIndicatorImage = UIImage(named: "arrow.backward")
-        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "arrow.backward")
+//        self.navigationBar.isTranslucent = false
+////        self.navigationBar.tintColor = .black
+////        self.navigationBar.backgroundColor = .red
+//        self.navigationBar.prefersLargeTitles = false
+////        self.navigationBar.backIndicatorImage = UIImage(named: "arrow.backward")
+////        self.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "arrow.backward")
         
-        let largeTitleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 21, weight: .bold)
-        ]
-        
-        let smallTitleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 16, weight: .bold)
-        ]
-        
-        self.navigationBar.largeTitleTextAttributes = largeTitleAttributes
-        self.navigationBar.titleTextAttributes = smallTitleAttributes
+//        let largeTitleAttributes: [NSAttributedString.Key: Any] = [
+//            .foregroundColor: UIColor.black,
+//            .font: UIFont.systemFont(ofSize: 21, weight: .bold)
+//        ]
+//
+//        let smallTitleAttributes: [NSAttributedString.Key: Any] = [
+//            .foregroundColor: UIColor.black,
+//            .font: UIFont.systemFont(ofSize: 16, weight: .bold)
+//        ]
+//
+//        self.navigationBar.largeTitleTextAttributes = largeTitleAttributes
+//        self.navigationBar.titleTextAttributes = smallTitleAttributes
         
     }
     

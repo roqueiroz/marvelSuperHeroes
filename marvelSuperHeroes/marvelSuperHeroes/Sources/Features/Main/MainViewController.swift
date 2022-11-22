@@ -12,8 +12,8 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.configTabbar()
         self.setupTabs()
+        self.configTabbar()
     }
      
     //MARK: Function`s
@@ -22,7 +22,6 @@ class MainViewController: UITabBarController {
         self.tabBar.unselectedItemTintColor = .gray
         self.tabBar.isTranslucent = false
         self.tabBar.tintColor = .black
-        self.tabBar.backgroundColor = .white
         self.tabBar.layer.borderWidth = 0.5
         
     }
@@ -53,7 +52,7 @@ class MainViewController: UITabBarController {
         let navigation = MainNavigationViewController()
         navigation.navigationBar.isHidden = false
         navigation.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -5)
-
+        
         return navigation
     }
     

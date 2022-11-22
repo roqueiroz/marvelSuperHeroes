@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     private var homeView: HomeView?
-    let homeViewModel: HomeViewModel = HomeViewModel()
+    var homeViewModel: HomeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,10 @@ class HomeViewController: UIViewController {
         self.homeViewModel.delegate(delegate: self)
         self.homeView?.setSeachBarProtocols(delegate: self, resultsUpdate: self)
         self.homeViewModel.fetchAllHeroes()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
     }
         
     override func loadView() {
@@ -43,12 +47,24 @@ class HomeViewController: UIViewController {
 //MARK: UISearchBar Delegate
 extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating  {
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let name = searchBar.text else {
+            return
+        }
+        
+        self.homeViewModel.isFiltering = true
+        self.homeViewModel.searchHeroByName(name, pagination: false)
         
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.homeViewModel.clearParameters()
+        self.homeViewModel.fetchAllHeroes()
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
-        
+        //print("aqui..")
     }
     
 }
@@ -57,26 +73,17 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating  {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //        return 1
-        
+       
         var numOfSections: Int = 0
-        
-        if self.homeViewModel.countListHero > 0
-        {
-            tableView.separatorStyle = .singleLine
-            numOfSections            = 1
+
+        if self.homeViewModel.countListHero > 0 {
             tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+            numOfSections = 1
+        } else {
+            self.homeView?.setMessageError(msg: "Nenhum Heroi encontrado!")
         }
-        else
-        {
-            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "No data available"
-            noDataLabel.textColor     = UIColor.black
-            noDataLabel.textAlignment = .center
-            tableView.backgroundView  = noDataLabel
-            tableView.separatorStyle  = .none
-        }
-        
+
         return numOfSections
         
     }
@@ -119,8 +126,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         if position > (tblHeight - scrollFrame) {
-            self.homeView?.showFooterLoading(true)
-            self.homeViewModel.fetchAllHeroes(pagination: true)
+            
+            if self.homeViewModel.isFiltering {
+                self.homeView?.showFooterLoading(true)
+                self.homeViewModel.searchHeroByName(pagination: true)
+            } else {
+                self.homeView?.showFooterLoading(true)
+                self.homeViewModel.fetchAllHeroes(pagination: true)
+            }
         }
         
     }
@@ -136,7 +149,10 @@ extension HomeViewController: HomeViewModelDelegate {
     }
     
     func errorRequest() {
-        print("Error request")
+        
+        self.homeViewModel.clearParameters()
+        self.homeView?.reloadTableView()
+        self.homeView?.setMessageError(msg: "Ops, algo deu erro...")
     }
     
 }

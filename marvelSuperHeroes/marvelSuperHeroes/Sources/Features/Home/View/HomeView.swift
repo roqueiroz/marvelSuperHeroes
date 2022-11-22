@@ -39,14 +39,29 @@ class HomeView: UIView {
     }
     
     //MARK: Function`s
-    public func setTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func setTableViewProtocols(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         self.tblHeroes.delegate = delegate
         self.tblHeroes.dataSource = dataSource
     }
     
-    public func setSeachBarProtocols(delegate: UISearchBarDelegate, resultsUpdate: UISearchResultsUpdating) {
+    func setSeachBarProtocols(delegate: UISearchBarDelegate, resultsUpdate: UISearchResultsUpdating) {
         self.searchBarHero.searchBar.delegate = delegate
         self.searchBarHero.searchResultsUpdater = resultsUpdate
+    }
+    
+    func setMessageError(msg: String) {
+        
+        let height = tblHeroes.bounds.size.height
+        let width = tblHeroes.bounds.size.width
+        
+        let lblMsgError: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        lblMsgError.text = msg
+        lblMsgError.textColor = UIColor.black
+        lblMsgError.textAlignment = .center
+        
+        tblHeroes.backgroundView = lblMsgError
+        tblHeroes.separatorStyle = .none
+        
     }
     
     func reloadTableView() {

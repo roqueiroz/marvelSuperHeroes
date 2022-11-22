@@ -28,14 +28,16 @@ class Service: ServiceDelegate {
     func getHeroes(parameters: Dictionary<String, String> = [:], completion: @escaping completion<[Hero]?>) {
     
         var url: String = "\(ApiGlobalVariables.getBaseUrl())/v1/public/characters?"
-        let basicParameters = loadBasicParameters()
+        //let basicParameters = loadRequiredParameters()
         
-        for (key, value) in basicParameters {
-            url.append("\(key)=\(value)&")
-        }
+        //        for (key, value) in basicParameters {
+        //            url.append("\(key)=\(value)&")
+        //        }
+        
+        url.append(loadRequiredParameters())
         
         for (key, value) in parameters {
-            url.append("\(key)=\(value)&")
+            url.append("&\(key)=\(value)")
         }
         
         AF.request(url, method: .get).validate(statusCode: 200...299).responseDecodable(of: Response.self) { response in
@@ -85,14 +87,12 @@ class Service: ServiceDelegate {
         
     }
 
-    private func loadBasicParameters() -> Dictionary<String, String> {
+    private func loadRequiredParameters() -> String {
+
+        var urlParameters = "ts=\(ApiGlobalVariables.getTSParameter())"
+        urlParameters.append("&apikey=\(ApiGlobalVariables.getApiKey())")
+        urlParameters.append("&hash=\(ApiGlobalVariables.getHASH())")
         
-        let parameters = [
-            "ts": ApiGlobalVariables.getTSParameter(),
-            "apikey": ApiGlobalVariables.getApiKey(),
-            "hash": ApiGlobalVariables.getHASH()
-        ]
-        
-        return parameters
+        return urlParameters
     }
 }
