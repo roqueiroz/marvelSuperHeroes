@@ -32,10 +32,11 @@ class HeroDetailViewModel {
         let normalText = hero.description
         let boldText  = "Descrição: "
         
-        let normalAttributedString = NSMutableAttributedString(string: normalText)
+        let normalAttrs = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)]
+        let normalAttributedString = NSMutableAttributedString(string: normalText, attributes: normalAttrs)
 
-        let attrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)]
-        let attributedString = NSMutableAttributedString(string: boldText, attributes:attrs)
+        let boldAttrs = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 21)]
+        let attributedString = NSMutableAttributedString(string: boldText, attributes:boldAttrs)
 
         attributedString.append(normalAttributedString)
         
@@ -43,6 +44,13 @@ class HeroDetailViewModel {
     }
     
     func getHeroImage() -> URL? {
-        return URL(string: hero.urlImage)
+        
+        guard let thumbnail = hero.thumbnail else {
+            return URL(string: "")!
+        }
+        
+        let url = "\(thumbnail.path).\(thumbnail.imageType)"
+        
+        return URL(string: url)!
     }
 }

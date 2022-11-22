@@ -18,6 +18,7 @@ class HomeView: UIView {
         searchBarCtrl.obscuresBackgroundDuringPresentation = false
         searchBarCtrl.searchBar.sizeToFit()
         searchBarCtrl.searchBar.searchBarStyle = .prominent
+        searchBarCtrl.navigationController?.hidesBarsOnSwipe = false
         
         
         return searchBarCtrl
@@ -27,6 +28,7 @@ class HomeView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.separatorColor = UIColor.clear
         tableView.register(HeroTableViewCell.self, forCellReuseIdentifier: "HeroTableViewCell")
 
         return tableView
@@ -45,6 +47,14 @@ class HomeView: UIView {
         self.tblHeroes.dataSource = dataSource
     }
     
+    func reloadTableView() {
+        self.tblHeroes.reloadData()
+    }
+    
+    func configScrol() {
+        self.tblHeroes.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: false)
+    }
+    
     private func addSubViews() {
         
         addSubview(tblHeroes)
@@ -56,7 +66,7 @@ class HomeView: UIView {
         
         let constraints = [
 
-            tblHeroes.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tblHeroes.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
             tblHeroes.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tblHeroes.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tblHeroes.bottomAnchor.constraint(equalTo: self.bottomAnchor),

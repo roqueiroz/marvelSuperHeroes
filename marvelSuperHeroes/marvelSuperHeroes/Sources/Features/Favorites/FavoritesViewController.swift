@@ -15,6 +15,14 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Meus Herois"
         self.buildView()
+        
+        
+        FullScreenLoaderView.show()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            FullScreenLoaderView.hide()
+        }
+        
     }
 
     //MARK: Function`s

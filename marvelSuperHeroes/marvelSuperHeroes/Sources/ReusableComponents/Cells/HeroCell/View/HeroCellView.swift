@@ -52,14 +52,15 @@ class HeroCellView: UIView {
         
         let constraints = [
             
+            
             self.lblName.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.lblName.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.lblName.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.lblName.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
             
             self.imgHero.topAnchor.constraint(equalTo: topAnchor),
             self.imgHero.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             self.imgHero.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            self.imgHero.bottomAnchor.constraint(equalTo: self.lblName.topAnchor),
+            self.imgHero.bottomAnchor.constraint(equalTo: self.lblName.topAnchor, constant: -5),
 
         ]
         

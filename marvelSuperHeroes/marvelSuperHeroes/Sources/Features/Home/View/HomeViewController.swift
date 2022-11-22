@@ -16,11 +16,18 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Marvel Super Heroes"
         self.navigationItem.searchController = homeView?.searchBarHero
+        
+        self.homeViewModel.delegate(delegate: self)
+        self.homeViewModel.fetchAllHeroes()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     override func loadView() {
         self.homeView = HomeView()
-        self.homeView?.setTableViewProtocols(delegate: self, dataSource: self)
+       
         self.view = homeView
     }
     
@@ -36,6 +43,7 @@ class HomeViewController: UIViewController {
     
 }
 
+//MARK: UITableView Delegate
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,7 +72,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 175
+        return 190
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,4 +93,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         self.goToHeroDetail(hero)
     }
+}
+
+//MARK: ViewModel Delegate
+extension HomeViewController: HomeViewModelDelegate {
+    
+    func successRequest() {
+        self.homeView?.setTableViewProtocols(delegate: self, dataSource: self)
+        self.homeView?.reloadTableView()
+    }
+    
+    func errorRequest() {
+        print("Error request")
+    }
+    
 }
