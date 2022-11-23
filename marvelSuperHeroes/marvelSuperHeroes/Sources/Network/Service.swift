@@ -32,7 +32,10 @@ class Service: ServiceDelegate {
         url.append(loadRequiredParameters())
         
         for (key, value) in parameters {
-            url.append("&\(key)=\(value)")
+            
+            let _value = value.replacingOccurrences(of: " ", with: "%20")
+            
+            url.append("&\(key)=\(_value)")
         }
         
         AF.request(url, method: .get).validate(statusCode: 200...299).responseDecodable(of: Response.self) { response in
@@ -90,4 +93,6 @@ class Service: ServiceDelegate {
         
         return urlParameters
     }
+    
+     
 }

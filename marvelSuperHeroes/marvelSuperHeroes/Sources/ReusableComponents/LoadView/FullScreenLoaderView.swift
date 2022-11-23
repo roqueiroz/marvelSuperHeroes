@@ -8,7 +8,7 @@
 import UIKit
 
 class FullScreenLoaderView: UIViewController {
-
+    
     static let viewCtrlLoader = FullScreenLoaderView(nibName: "FullScreenLoaderView", bundle: nil)
     @IBOutlet weak var imgLoader: UIImageView!
     
@@ -17,7 +17,7 @@ class FullScreenLoaderView: UIViewController {
         imgLoader.rotateImage()
         setBackgroundOverlay(view: self.view)
     }
-
+    
     static func show() {
         guard let rootViewCtrl = UIViewController.topViewController() else {
             return
@@ -39,7 +39,8 @@ class FullScreenLoaderView: UIViewController {
         viewCtrlLoader.willMove(toParent: nil)
         viewCtrlLoader.removeFromParent()
     }
-
+    
+    
 }
 
 extension UIViewController {

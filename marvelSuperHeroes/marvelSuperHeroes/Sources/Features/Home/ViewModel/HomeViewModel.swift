@@ -46,6 +46,8 @@ class HomeViewModel {
         
         if isPaging {
             offset = offset + limit
+        } else {
+            offset = 0
         }
         
         parameters = ["limit": "\(self.limit)", "offset": "\(self.offset)"]

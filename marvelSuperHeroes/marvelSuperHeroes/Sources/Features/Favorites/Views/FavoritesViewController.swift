@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesViewController: UIViewController {
 
@@ -15,12 +16,14 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Meus Herois"
         self.buildView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        let list = self.context.fetchFavoriteHeroes()
         
-        FullScreenLoaderView.show()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            FullScreenLoaderView.hide()
+        for item in list {
+            print(item.name!)
         }
         
     }
@@ -32,4 +35,3 @@ class FavoritesViewController: UIViewController {
     }
     
 }
-

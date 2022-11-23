@@ -34,7 +34,6 @@ class HeroDetailView: UIView {
         
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-//        textView.font = UIFont.systemFont(ofSize: 14)
         textView.textAlignment = .left
         textView.textColor = .black
         textView.isEditable = false
@@ -89,7 +88,7 @@ class HeroDetailView: UIView {
             self.imgHero.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             self.imgHero.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             self.imgHero.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            self.imgHero.heightAnchor.constraint(equalToConstant: 260),
+            //self.imgHero.heightAnchor.constraint(equalToConstant: 260),
             
             self.lblTitle.topAnchor.constraint(equalTo: self.imgHero.bottomAnchor, constant: 10),
             self.lblTitle.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -104,6 +103,7 @@ class HeroDetailView: UIView {
             self.tvDescription.leadingAnchor.constraint(equalTo: self.imgHero.leadingAnchor),
             self.tvDescription.trailingAnchor.constraint(equalTo: self.imgHero.trailingAnchor),
             self.tvDescription.bottomAnchor.constraint(equalTo: self.btnFavorite.topAnchor, constant: -10),
+            self.tvDescription.heightAnchor.constraint(equalToConstant: 240)
             
         ]
         
@@ -113,10 +113,7 @@ class HeroDetailView: UIView {
     }
     
     @objc func setFavotireHero() {
-        
         self.actionSubject?()
-        
-        print("click no botao...")
     }
 }
 

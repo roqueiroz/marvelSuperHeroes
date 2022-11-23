@@ -14,7 +14,6 @@ class HeroDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
             
     override func loadView() {
@@ -30,12 +29,26 @@ class HeroDetailViewController: UIViewController {
     }
     
     func setHero(_ hero: Hero) {
-        self.heroDetails = HeroDetailViewModel(hero)
+        self.heroDetails = HeroDetailViewModel(hero, modelContext: self.context)
     }
     
     //MARK: Actions
     @objc func dismissModal() {
-        self.dismiss(animated: true, completion: nil)
+        
+        self.heroDetails?.setFavoriteHero() { isSuccess in
+            
+            if isSuccess {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+               
+                let alert = UIAlertController(title: "Ops...", message: "Não foi possivel favoritar este heroi.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            
+        }
+        
     }
 
 }

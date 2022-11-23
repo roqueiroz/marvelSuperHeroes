@@ -22,10 +22,6 @@ class HomeViewController: UIViewController {
         self.homeViewModel.fetchAllHeroes()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear")
-    }
-        
     override func loadView() {
         self.homeView = HomeView()
        
@@ -85,7 +81,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 290
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

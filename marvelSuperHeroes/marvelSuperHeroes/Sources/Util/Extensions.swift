@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 extension UITableView {
     
@@ -62,6 +62,50 @@ extension UIImageView {
         }
     }
 
+}
+
+extension UIViewController {
+    
+    var context: NSManagedObjectContext {
+    
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        return appDelegate.persistentContainer.viewContext
+        
+    }
+
+}
+
+extension NSManagedObjectContext {
+    
+    func fetchFavoriteHeroById(_ id: Int) -> FavoriteHeroEntity? {
+                
+        let listFavoriteHeroes = self.fetchFavoriteHeroes()
+        
+        guard let favoriteHero = listFavoriteHeroes.filter({ item in return item.id == id }).first else {
+            return nil
+        }
+        
+        return favoriteHero
+    }
+    
+    func fetchFavoriteHeroes() -> [FavoriteHeroEntity] {
+        
+        let sort = NSSortDescriptor(key: "name", ascending: true)
+        let fetchRequest: NSFetchRequest<FavoriteHeroEntity> = FavoriteHeroEntity.fetchRequest()
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            
+            let list = try self.fetch(fetchRequest)
+            
+            return list
+            
+        } catch {
+            return []
+        }
+        
+    }
 }
 
 // Fonte: https://github.com/NikolaiRuhe/SwiftDigest/blob/master/SwiftDigest/MD5Digest.swift
