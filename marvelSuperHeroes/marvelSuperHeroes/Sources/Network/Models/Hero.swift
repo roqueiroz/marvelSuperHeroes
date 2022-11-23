@@ -47,17 +47,3 @@ struct Thumbnail: Codable {
     }
 }
 
-struct Response: Codable {
-    
-    var code: Int
-    var status: String
-    var data: ResponseData
-}
-
-struct ResponseData: Codable {
-    var offset: Int
-    var limit: Int
-    var total: Int
-    var count: Int
-    var results: [Hero]
-}

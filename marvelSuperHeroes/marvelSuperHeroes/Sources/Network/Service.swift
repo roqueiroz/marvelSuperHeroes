@@ -28,12 +28,7 @@ class Service: ServiceDelegate {
     func getHeroes(parameters: Dictionary<String, String> = [:], completion: @escaping completion<[Hero]?>) {
     
         var url: String = "\(ApiGlobalVariables.getBaseUrl())/v1/public/characters?"
-        //let basicParameters = loadRequiredParameters()
-        
-        //        for (key, value) in basicParameters {
-        //            url.append("\(key)=\(value)&")
-        //        }
-        
+
         url.append(loadRequiredParameters())
         
         for (key, value) in parameters {

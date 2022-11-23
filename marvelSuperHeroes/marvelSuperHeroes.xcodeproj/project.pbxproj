@@ -26,7 +26,6 @@
 		30E20B19292656E7008FC3DB /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B17292656E7008FC3DB /* FavoritesView.swift */; };
 		30E20B1B29265830008FC3DB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B1A29265830008FC3DB /* MainViewController.swift */; };
 		30E20B1C29265830008FC3DB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B1A29265830008FC3DB /* MainViewController.swift */; };
-		30E20B2229265E0F008FC3DB /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B2129265E0F008FC3DB /* MainNavigationViewController.swift */; };
 		30E20B25292683DD008FC3DB /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B24292683DD008FC3DB /* Hero.swift */; };
 		30E20B28292684C4008FC3DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B27292684C4008FC3DB /* HomeViewModel.swift */; };
 		30E20B29292684C4008FC3DB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B27292684C4008FC3DB /* HomeViewModel.swift */; };
@@ -47,6 +46,8 @@
 		30E20B57292C179A008FC3DB /* FullScreenLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B55292C179A008FC3DB /* FullScreenLoaderView.swift */; };
 		30E20B58292C179A008FC3DB /* FullScreenLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30E20B56292C179A008FC3DB /* FullScreenLoaderView.xib */; };
 		30E20B5A292C226B008FC3DB /* ApiGlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B59292C226B008FC3DB /* ApiGlobalVariables.swift */; };
+		30E20B5C292D686B008FC3DB /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B5B292D686B008FC3DB /* ResponseModel.swift */; };
+		30E20B5F292E4694008FC3DB /* MD5Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B5E292E4694008FC3DB /* MD5Generator.swift */; };
 		87CFDEC61E181169FFC09568 /* Pods_marvelSuperHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA381185C82B8C1BA566E42D /* Pods_marvelSuperHeroesTests.framework */; };
 		FFB558BBA1101E9C85D278D5 /* Pods_marvelSuperHeroes_marvelSuperHeroesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E5A552CD10609D5E54387A /* Pods_marvelSuperHeroes_marvelSuperHeroesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -86,7 +87,6 @@
 		30E20B13292656AA008FC3DB /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		30E20B17292656E7008FC3DB /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		30E20B1A29265830008FC3DB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		30E20B2129265E0F008FC3DB /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
 		30E20B24292683DD008FC3DB /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		30E20B27292684C4008FC3DB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		30E20B2C2926AB98008FC3DB /* HeroCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellViewModel.swift; sourceTree = "<group>"; };
@@ -102,6 +102,8 @@
 		30E20B55292C179A008FC3DB /* FullScreenLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenLoaderView.swift; sourceTree = "<group>"; };
 		30E20B56292C179A008FC3DB /* FullScreenLoaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenLoaderView.xib; sourceTree = "<group>"; };
 		30E20B59292C226B008FC3DB /* ApiGlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGlobalVariables.swift; sourceTree = "<group>"; };
+		30E20B5B292D686B008FC3DB /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		30E20B5E292E4694008FC3DB /* MD5Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Generator.swift; sourceTree = "<group>"; };
 		35176E1C4B34ED94035A3A65 /* Pods-marvelSuperHeroesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroesTests.debug.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroesTests/Pods-marvelSuperHeroesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39090E938B877B77B164859D /* Pods-marvelSuperHeroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroes.debug.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroes/Pods-marvelSuperHeroes.debug.xcconfig"; sourceTree = "<group>"; };
 		3C5CD95E82FB37AC23F424FE /* Pods-marvelSuperHeroes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroes.release.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroes/Pods-marvelSuperHeroes.release.xcconfig"; sourceTree = "<group>"; };
@@ -218,7 +220,6 @@
 				30E20B42292BCC85008FC3DB /* Features */,
 				30E20B43292BCCD8008FC3DB /* ReusableComponents */,
 				30E20B3C2928441E008FC3DB /* Util */,
-				30E20B23292683AA008FC3DB /* Models */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -227,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				30E20B1A29265830008FC3DB /* MainViewController.swift */,
-				30E20B2129265E0F008FC3DB /* MainNavigationViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -254,7 +254,6 @@
 			isa = PBXGroup;
 			children = (
 				30E20B16292656D0008FC3DB /* Views */,
-				30E20B13292656AA008FC3DB /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -262,6 +261,7 @@
 		30E20B16292656D0008FC3DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30E20B13292656AA008FC3DB /* FavoritesViewController.swift */,
 				30E20B17292656E7008FC3DB /* FavoritesView.swift */,
 			);
 			path = Views;
@@ -271,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				30E20B24292683DD008FC3DB /* Hero.swift */,
+				30E20B5B292D686B008FC3DB /* ResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -312,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				30E20B3F292BB76C008FC3DB /* View */,
-				30E20B40292BB7AC008FC3DB /* HeroDetailViewModel.swift */,
+				30E20B5D292D68D1008FC3DB /* ViewModel */,
 			);
 			path = HeroDetail;
 			sourceTree = "<group>";
@@ -322,6 +323,7 @@
 			children = (
 				30E20B3A29284080008FC3DB /* Utilities.swift */,
 				30E20B3D29284459008FC3DB /* Extensions.swift */,
+				30E20B5E292E4694008FC3DB /* MD5Generator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -367,6 +369,7 @@
 		30E20B45292BCE08008FC3DB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				30E20B23292683AA008FC3DB /* Models */,
 				30E20B46292BD04E008FC3DB /* Service.swift */,
 				30E20B59292C226B008FC3DB /* ApiGlobalVariables.swift */,
 			);
@@ -380,6 +383,14 @@
 				30E20B56292C179A008FC3DB /* FullScreenLoaderView.xib */,
 			);
 			path = LoadView;
+			sourceTree = "<group>";
+		};
+		30E20B5D292D68D1008FC3DB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				30E20B40292BB7AC008FC3DB /* HeroDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5CA5491F4E86443783A02D67 /* Pods */ = {
@@ -654,11 +665,12 @@
 				30E20AD62925AFD4008FC3DB /* SceneDelegate.swift in Sources */,
 				30E20B0F2925B7A1008FC3DB /* HomeView.swift in Sources */,
 				30E20B5A292C226B008FC3DB /* ApiGlobalVariables.swift in Sources */,
+				30E20B5C292D686B008FC3DB /* ResponseModel.swift in Sources */,
 				30E20B352927B5D5008FC3DB /* HeroDetailViewController.swift in Sources */,
 				30E20B57292C179A008FC3DB /* FullScreenLoaderView.swift in Sources */,
 				30E20B322926D991008FC3DB /* HeroCellView.swift in Sources */,
-				30E20B2229265E0F008FC3DB /* MainNavigationViewController.swift in Sources */,
 				30E20B25292683DD008FC3DB /* Hero.swift in Sources */,
+				30E20B5F292E4694008FC3DB /* MD5Generator.swift in Sources */,
 				30E20B3B29284080008FC3DB /* Utilities.swift in Sources */,
 				30E20B18292656E7008FC3DB /* FavoritesView.swift in Sources */,
 				30E20B382927B92C008FC3DB /* HeroDetailView.swift in Sources */,

@@ -44,9 +44,8 @@ class HomeView: UIView {
         self.tblHeroes.dataSource = dataSource
     }
     
-    func setSeachBarProtocols(delegate: UISearchBarDelegate, resultsUpdate: UISearchResultsUpdating) {
+    func setSeachBarProtocols(delegate: UISearchBarDelegate) {
         self.searchBarHero.searchBar.delegate = delegate
-        self.searchBarHero.searchResultsUpdater = resultsUpdate
     }
     
     func setMessageError(msg: String) {

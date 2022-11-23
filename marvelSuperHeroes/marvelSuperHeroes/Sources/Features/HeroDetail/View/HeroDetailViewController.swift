@@ -27,7 +27,6 @@ class HeroDetailViewController: UIViewController {
         
         self.view = heroDetailView
         
-        
     }
     
     func setHero(_ hero: Hero) {

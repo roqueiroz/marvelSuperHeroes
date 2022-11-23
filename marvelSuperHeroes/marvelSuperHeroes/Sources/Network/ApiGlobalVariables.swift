@@ -9,27 +9,24 @@ import Foundation
 
 class ApiGlobalVariables {
     
+    private static func getPrivateKey() -> String {
+        let privateKey = "6f9b74eaadf8c925ae54b59c4bcc8b8e554a2563"
+        
+        return privateKey
+    }
+    
     class func getHASH() -> String {
         
-        let publicKey = "7b67f05995567256643c104d071e7e9a"
-        let privateKey = "6f9b74eaadf8c925ae54b59c4bcc8b8e554a2563"
-        var hash: String = "82dd9e102275f0a8c2f00ca9d132d1cb" //"2910395f83d512d5ba280cb3534117ae"
+        var hash: String = ""
+                
+        let str = "\(getTSParameter())\(getPrivateKey())\(getApiKey())"
         
-        /*
-         ts - a timestamp (or other long string which can change on a request-by-request basis)
-         hash - a md5 digest of the ts parameter, your private key and your public key (e.g. md5(ts+privateKey+publicKey)
-         */
-        
-        let str = "\(getTSParameter())\(privateKey)\(publicKey)"
-        
-        //hash = str.utf8.md5
+        hash = "\(str.utf8.md5)"
         
         return hash
     }
     
     class func getTSParameter() -> String {
-        
-        let timeStamp = NSDate().timeIntervalSince1970
         
         return String(1)
     }

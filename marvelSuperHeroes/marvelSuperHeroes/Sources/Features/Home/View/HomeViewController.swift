@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.searchController = homeView?.searchBarHero
         
         self.homeViewModel.delegate(delegate: self)
-        self.homeView?.setSeachBarProtocols(delegate: self, resultsUpdate: self)
+        self.homeView?.setSeachBarProtocols(delegate: self)
         self.homeViewModel.fetchAllHeroes()
     }
     
@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
 }
 
 //MARK: UISearchBar Delegate
-extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating  {
+extension HomeViewController: UISearchBarDelegate  {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -61,10 +61,6 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating  {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.homeViewModel.clearParameters()
         self.homeViewModel.fetchAllHeroes()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        //print("aqui..")
     }
     
 }

@@ -47,9 +47,8 @@ class MainViewController: UITabBarController {
         
     }
     
-    private func configNavigationController() -> MainNavigationViewController {
-
-        let navigation = MainNavigationViewController()
+    private func configNavigationController() -> UINavigationController {
+        let navigation = UINavigationController()
         navigation.navigationBar.isHidden = false
         navigation.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -5)
         
