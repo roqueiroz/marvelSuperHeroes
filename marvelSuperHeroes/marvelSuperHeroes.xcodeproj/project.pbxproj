@@ -48,6 +48,8 @@
 		30E20B5A292C226B008FC3DB /* ApiGlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B59292C226B008FC3DB /* ApiGlobalVariables.swift */; };
 		30E20B5C292D686B008FC3DB /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B5B292D686B008FC3DB /* ResponseModel.swift */; };
 		30E20B5F292E4694008FC3DB /* MD5Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B5E292E4694008FC3DB /* MD5Generator.swift */; };
+		30E20B62292EC751008FC3DB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B61292EC751008FC3DB /* FavoritesViewModel.swift */; };
+		30E20B66292EE020008FC3DB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E20B65292EE020008FC3DB /* Protocols.swift */; };
 		87CFDEC61E181169FFC09568 /* Pods_marvelSuperHeroesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA381185C82B8C1BA566E42D /* Pods_marvelSuperHeroesTests.framework */; };
 		FFB558BBA1101E9C85D278D5 /* Pods_marvelSuperHeroes_marvelSuperHeroesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E5A552CD10609D5E54387A /* Pods_marvelSuperHeroes_marvelSuperHeroesUITests.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,8 @@
 		30E20B59292C226B008FC3DB /* ApiGlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiGlobalVariables.swift; sourceTree = "<group>"; };
 		30E20B5B292D686B008FC3DB /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		30E20B5E292E4694008FC3DB /* MD5Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Generator.swift; sourceTree = "<group>"; };
+		30E20B61292EC751008FC3DB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		30E20B65292EE020008FC3DB /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		35176E1C4B34ED94035A3A65 /* Pods-marvelSuperHeroesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroesTests.debug.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroesTests/Pods-marvelSuperHeroesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39090E938B877B77B164859D /* Pods-marvelSuperHeroes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroes.debug.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroes/Pods-marvelSuperHeroes.debug.xcconfig"; sourceTree = "<group>"; };
 		3C5CD95E82FB37AC23F424FE /* Pods-marvelSuperHeroes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelSuperHeroes.release.xcconfig"; path = "Target Support Files/Pods-marvelSuperHeroes/Pods-marvelSuperHeroes.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 		30E20B1229265629008FC3DB /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				30E20B60292EC72D008FC3DB /* ViewModel */,
 				30E20B16292656D0008FC3DB /* Views */,
 			);
 			path = Favorites;
@@ -351,6 +356,7 @@
 		30E20B43292BCCD8008FC3DB /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
+				30E20B63292EE003008FC3DB /* Protocols */,
 				30E20B4C292BFFCF008FC3DB /* LoadView */,
 				30E20B2A2926AB56008FC3DB /* Cells */,
 			);
@@ -391,6 +397,22 @@
 				30E20B40292BB7AC008FC3DB /* HeroDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		30E20B60292EC72D008FC3DB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				30E20B61292EC751008FC3DB /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		30E20B63292EE003008FC3DB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				30E20B65292EE020008FC3DB /* Protocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		5CA5491F4E86443783A02D67 /* Pods */ = {
@@ -662,7 +684,9 @@
 				30E20B302926AC50008FC3DB /* HeroTableViewCell.swift in Sources */,
 				30E20B28292684C4008FC3DB /* HomeViewModel.swift in Sources */,
 				30E20ADE2925AFD4008FC3DB /* marvelSuperHeroes.xcdatamodeld in Sources */,
+				30E20B66292EE020008FC3DB /* Protocols.swift in Sources */,
 				30E20AD62925AFD4008FC3DB /* SceneDelegate.swift in Sources */,
+				30E20B62292EC751008FC3DB /* FavoritesViewModel.swift in Sources */,
 				30E20B0F2925B7A1008FC3DB /* HomeView.swift in Sources */,
 				30E20B5A292C226B008FC3DB /* ApiGlobalVariables.swift in Sources */,
 				30E20B5C292D686B008FC3DB /* ResponseModel.swift in Sources */,

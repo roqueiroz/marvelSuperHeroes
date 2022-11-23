@@ -34,34 +34,40 @@ extension UITableView {
 
 extension UIImageView {
     
-    func imageURLLoad(url: URL) {
-
-        DispatchQueue.global().async { [weak self] in
-            
-            func setImage(image:UIImage?) {
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
-            }
-            
-            let urlToString = url.absoluteString as NSString
-            
-            if let cachedImage = Utilities.getImageCache(url: urlToString) {
-                setImage(image: cachedImage)
-            } else if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                
-                DispatchQueue.main.async {
-                    
-                    Utilities.setImageCache(image: image, url: urlToString)
-                    setImage(image: image)
-                }
-                
-            } else {
-                setImage(image: nil)
+    func imageURLLoad(url: URL?) {
+        
+        func setImage(image: UIImage?) {
+            DispatchQueue.main.async {
+                self.image = image
             }
         }
+        
+        if url == nil {
+            setImage(image: UIImage(named: "imgDefault"))
+        } else {
+            
+            DispatchQueue.global().async { [weak self] in
+                
+                let urlToString = url!.absoluteString as NSString
+                
+                if let cachedImage = Utilities.getImageCache(url: urlToString) {
+                    setImage(image: cachedImage)
+                } else if let data = try? Data(contentsOf: url!), let image = UIImage(data: data) {
+                    
+                    DispatchQueue.main.async {
+                        
+                        Utilities.setImageCache(image: image, url: urlToString)
+                        setImage(image: image)
+                    }
+                    
+                } else {
+                    setImage(image: nil)
+                }
+            }
+        }
+        
     }
-
+    
 }
 
 extension UIViewController {
@@ -112,27 +118,6 @@ extension NSManagedObjectContext {
 // - Copyright: Copyright (c) 2017 Nikolai Ruhe.
 public extension Sequence where Element == UInt8 {
 
-    /// Computes md5 digest value of contained bytes.
-    ///
-    /// This extension on `Sequence` is the main API to create `MD5Digest` values.
-    /// It is usable on all collection types that use bytes as elements, for instance
-    /// `Data` or `String.UTF8View`:
-    ///
-    /// ## Example:
-    ///
-    /// Print the md5 of a string's UTF-8 representation
-    ///
-    ///     let string = "The quick brown fox jumps over the lazy dog"
-    ///     print("md5: \(string.utf8.md5)")
-    ///     // prints "md5: 9e107d9d372bb6826bd81d3542a419d6"
-    ///
-    /// Check if a file's contents match a digest
-    ///
-    ///     let expectedDigest = MD5Digest(rawValue: "9e107d9d372bb6826bd81d3542a419d6")!
-    ///     let data = try Data(contentsOf: someFileURL)
-    ///     if data.md5 != expectedDigest {
-    ///         throw .digestMismatchError
-    ///     }
     var md5: MD5Digest {
         return MD5Digest(from: Data(self))
     }

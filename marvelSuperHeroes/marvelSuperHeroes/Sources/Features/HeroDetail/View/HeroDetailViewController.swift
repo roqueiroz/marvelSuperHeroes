@@ -12,6 +12,8 @@ class HeroDetailViewController: UIViewController {
     private var heroDetailView: HeroDetailView?
     private var heroDetails: HeroDetailViewModel?
 
+    var refreshDataDelegate: RefreshDataDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -38,7 +40,9 @@ class HeroDetailViewController: UIViewController {
         self.heroDetails?.setFavoriteHero() { isSuccess in
             
             if isSuccess {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.refreshDataDelegate?.refreshData()
+                }
             } else {
                
                 let alert = UIAlertController(title: "Ops...", message: "Não foi possivel favoritar este heroi.", preferredStyle: UIAlertController.Style.alert)

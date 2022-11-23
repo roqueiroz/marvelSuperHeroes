@@ -10,7 +10,7 @@ import UIKit
 class HeroCellViewModel {
     
     private var hero: Hero
- 
+    
     public var getHero: Hero {
         return self.hero
     }
@@ -19,15 +19,14 @@ class HeroCellViewModel {
         return self.hero.name
     }
     
-    var getUrlImage: URL {
+    var getUrlImage: URL? {
         
-        guard let thumbnail = hero.thumbnail else {
-            return URL(string: "")!
+        if let url = URL(string: hero.imageUrl) {
+            return url
         }
         
-        let url = "\(thumbnail.path).\(thumbnail.imageType)"
+        return nil
         
-        return URL(string: url)!
     }
     
     var getDescription: String {
@@ -42,8 +41,5 @@ class HeroCellViewModel {
         self.hero = hero
     }
     
-    public func setFavoriteHero(_ isFavorite: Bool) {
-       // self.hero.isFavorite = isFavorite
-    }
-    
+
 }

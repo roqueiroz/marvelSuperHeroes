@@ -30,7 +30,7 @@ class HeroTableViewCell: UITableViewCell {
         
         self.viewHero.lblName.text = self.heroCellViewModel?.getName
         
-        self.viewHero.imgHero.imageURLLoad(url: self.heroCellViewModel!.getUrlImage)
+        self.viewHero.imgHero.imageURLLoad(url: self.heroCellViewModel?.getUrlImage)
     }
 
     private func configViewCell() {
